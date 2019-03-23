@@ -11,34 +11,34 @@ $objVeiculoDAO = new VeiculoDAO();
                     <span class="card-title">Cadastrar</span>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input type="text" class="validate" name="nome">
+                            <input type="text" name="nome" id="nome">
                             <label>Nome</label>
                         </div>
 
                         <div class="input-field col s4">
-                            <input type="text" class="validate" name="tipo">
+                            <input type="text" name="tipo" id="tipo">
                             <label>Tipo</label>
                         </div>
 
                         <div class="input-field col s4">
-                            <input type="text" class="validate" name="combustivel">
+                            <input type="text" name="combustivel" id="combustivel">
                             <label>Combustivel</label>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input type="text" class="validate" name="modelo">
+                            <input type="text" name="modelo" id="modelo">
                             <label>Modelo</label>
                         </div>
 
                         <div class="input-field col s4">
-                            <input type="text" class="validate" name="marca">
+                            <input type="text" name="marca" id="marca">
                             <label>Marca</label>
                         </div>
 
                         <div class="input-field col s4">
-                            <input type="number" class="validate" name="ano">
+                            <input type="number" name="ano" id="ano">
                             <label>Ano</label>
                         </div>
 
@@ -46,12 +46,8 @@ $objVeiculoDAO = new VeiculoDAO();
 
                 </div>
                 <div class="card-action">
-                    <button class="btn waves-effect waves-light" type="submit" name="salvar">Salvar
-                        <i class="material-icons right">send</i>
-                    </button>
-                    <button class="btn waves-effect waves-light" type="reset" name="limpar">Cancelar
-                        <i class="material-icons right">clear</i>
-                    </button>
+                    <input class="btn waves-effect waves-light" type="submit" name="salvar" id="salvar" value="Salvar">
+                    <input class="btn waves-effect waves-light" type="reset" name="limpar" id="limpar" value="Limpar">
                 </div>
             </div>
         </form>
@@ -119,10 +115,14 @@ $objVeiculoDAO = new VeiculoDAO();
     </div>
 </div>
 
-
 <?php
-if (isset($_POST['salvar'])) {
-    $objVeiculoDAO->salvarVeiculo();
-    header("Location: index.php");
+if (($_POST['salvar'])) {
+    if (!empty($_GET['nome']) && !empty($_GET['tipo']) && !empty($_GET['combustivel']) && !empty($_GET['marca']) && !empty($_GET['modelo']) && !empty($_GET['ano'])) {
+        $objVeiculoDAO->salvarVeiculo();
+    } else {
+        echo '<script>
+
+                window.onload = () => toastAlert("Preencha todos os campos!");
+              </script>';
+    }
 }
-?>
