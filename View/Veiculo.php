@@ -116,7 +116,7 @@ $objVeiculoDAO = new VeiculoDAO();
 </div>
 
 <?php
-if (($_POST['salvar'])) {
+if (isset($_POST['salvar'])) {
     if (!empty($_GET['nome']) && !empty($_GET['tipo']) && !empty($_GET['combustivel']) && !empty($_GET['marca']) && !empty($_GET['modelo']) && !empty($_GET['ano'])) {
         $objVeiculoDAO->salvarVeiculo();
     } else {
