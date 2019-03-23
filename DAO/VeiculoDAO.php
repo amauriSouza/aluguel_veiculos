@@ -24,9 +24,11 @@ class VeiculoDAO {
     }
 
     function salvarVeiculo() {
+        $retorno = false;
         $query = "INSERT INTO veiculo VALUES (DEFAULT, "
                 . "'$this->nome','$this->tipo', '$this->combustivel', '$this->modelo', '$this->marca', '$this->ano', '0');";
-        executaQuery($query);
+        $retorno = executaQuery($query);
+        return $retorno;
     }
 
     function getVeiculos() {
