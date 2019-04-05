@@ -12,15 +12,24 @@ class VeiculoDAO {
     private $marca;
     private $ano;
 
-    function __construct() {
-        if (isset($_POST['nome'])) {
-            $this->nome = $_POST['nome'];
-            $this->tipo = $_POST['tipo'];
-            $this->combustivel = $_POST['combustivel'];
-            $this->modelo = $_POST['modelo'];
-            $this->marca = $_POST['marca'];
-            $this->ano = $_POST['ano'];
-        }
+//    function __construct() {
+//        if (isset($_POST['nome'])) {
+//            $this->nome = $_POST['nome'];
+//            $this->tipo = $_POST['tipo'];
+//            $this->combustivel = $_POST['combustivel'];
+//            $this->modelo = $_POST['modelo'];
+//            $this->marca = $_POST['marca'];
+//            $this->ano = $_POST['ano'];
+//        }
+//    }
+
+    function preencheObj() {
+        $this->nome = $_POST['nome'];
+        $this->tipo = $_POST['tipo'];
+        $this->combustivel = $_POST['combustivel'];
+        $this->modelo = $_POST['modelo'];
+        $this->marca = $_POST['marca'];
+        $this->ano = $_POST['ano'];
     }
 
     function salvarVeiculo() {

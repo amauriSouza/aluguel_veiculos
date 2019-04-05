@@ -121,10 +121,16 @@ $objVeiculoDAO = new VeiculoDAO();
 
 <?php
 if (isset($_POST['salvar'])) {
+    $objVeiculoDAO->preencheObj();
     if ($objVeiculoDAO->salvarVeiculo()) {
         echo '<script>
                 window.onload = () => toastAlert("Veiculo cadastrado!");
           </script>';
+        
+        
+       $_POST['salvar'] = array();
+
+
     } else {
         echo '<script>
                 window.onload = () => toastAlert("Deu erro (=");
